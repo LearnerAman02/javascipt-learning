@@ -215,3 +215,19 @@ async function fetchData() {
 
 // now se hadling the promise returned by APIs kitna easy ho gaya in comparison of CALLBACK HELL and PROMISE CHAINING
 fetchData(); // now bas ye hai ki hume ek extra function call lagani padti hai to start that async function execution
+
+//----------- niche wala code link to index.html file and run for better understanding -----------------------------
+function sum(a, c) {
+  setTimeout(() => {
+    console.log(`Sum is : ${a + c}`);
+  }, 4000);
+}
+
+async function f1() {
+  console.log("Making call to asynchronous function.....");
+  await sum(7, 12);
+}
+
+// yaha carefully dekhiye f1 ek async function and async function hamesha ek promise return krta hai
+let s1 = f1();
+console.log(s1); // and isiliye jab ye log hoga toh aap console mein dekhoge ki promise pending show karega and jaise hi 4 second complete hoga and sum function print hoga than await ne successfully fulfilled kara diya hoga promise ko and now if u will console.log(s1) than waha pe promise fulfilled likhke aayega
