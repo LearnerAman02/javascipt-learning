@@ -231,3 +231,40 @@ async function f1() {
 // yaha carefully dekhiye f1 ek async function and async function hamesha ek promise return krta hai
 let s1 = f1();
 console.log(s1); // and isiliye jab ye log hoga toh aap console mein dekhoge ki promise pending show karega and jaise hi 4 second complete hoga and sum function print hoga than await ne successfully fulfilled kara diya hoga promise ko and now if u will console.log(s1) than waha pe promise fulfilled likhke aayega
+
+
+//----------------- ERROR HANDLING in JS ------------------------
+// let us understand through code
+
+// maan lo hum car object se speed ko jaan rahe hai of certain car but woh jo car variable aa raha hai from server woh defined hi nhi hai waha pe toh it will give the error written below
+//const speed = car.speed;
+// The code crashes with the following error:
+// "ReferenceError: car is not defined"
+
+// so agar hum safely error ko handle karna hai toh hum same cheex ko try block mein likhenge along with catch block so that agar error arise hoga in try block code than it will be easily tackled by catch block
+try {
+  const speed = car.speed;
+} catch (err) {
+  console.log(`An error was thrown: ${err}`);
+  // the code cleanly logs:
+  // "An error was thrown: ReferenceError: car is not defined"
+}
+
+// one more important thing to understand while using try catch block for ERROR HANDLING
+printCharacterStats(4);
+try {
+  printCharacterStats("ten");
+  //printCharacterStats(10); --> will not get executed
+} catch (err) {
+  console.log("Error Occued : " + err);
+}
+printCharacterStats(10); // agar maine ye function call ko bhi try block mein put kiya after printCharacterStats("ten"); function toh ye (10) wala function execute hi nhi hoga because code error aane ke baad directly jump kar jaayega in catch block and woh run nhi hoga
+
+// don't touch below this line
+
+function printCharacterStats(level) {
+  if (isNaN(level)) {
+    throw new Error("Parameter is not a number!");
+  }
+  console.log(`Your character is level ${level}!`);
+}
